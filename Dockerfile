@@ -1,0 +1,17 @@
+# 允许通过构建参数指定基础镜像，默认使用一个镜像代理源
+ARG PY_BASE=registry.dockerproxy.com/library/python:3.11-slim
+FROM ${PY_BASE}
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app.py .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
