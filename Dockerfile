@@ -1,5 +1,5 @@
-# 允许通过构建参数指定基础镜像，默认使用阿里云官方镜像源
-ARG PY_BASE=registry.cn-hangzhou.aliyuncs.com/library/python:3.11-slim
+# 允许通过构建参数指定基础镜像，默认使用Docker Hub官方镜像
+ARG PY_BASE=python:3.11-slim
 FROM ${PY_BASE}
 
 # 设置时区
