@@ -1,5 +1,5 @@
-# 允许通过构建参数指定基础镜像，默认使用开放的代理源（避免认证问题）
-ARG PY_BASE=registry.dockerproxy.com/library/python:3.11-slim
+# 允许通过构建参数指定基础镜像，默认使用阿里云公共镜像仓库
+ARG PY_BASE=registry.aliyuncs.com/library/python:3.11-slim
 FROM ${PY_BASE}
 
 # 设置时区
