@@ -16,6 +16,10 @@ def create_app() -> FastAPI:
     def health() -> Dict[str, Any]:
         return {"status": "ok", "timestamp": datetime.utcnow().isoformat() + "Z"}
 
+    @app.get("/")
+    def health() -> Dict[str, Any]:
+        return {"status": "ok", "timestamp": datetime.utcnow().isoformat() + "Z"}
+
     @app.post("/echo")
     def echo(payload: EchoRequest) -> Dict[str, str]:
         return {"echo": payload.message}
