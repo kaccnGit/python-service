@@ -12,15 +12,13 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
 - Echo：`POST http://localhost:8000/echo`，请求体例如 `{"message": "hello"}`
 
 ## 使用 Docker 运行
-Dockerfile 支持通过构建参数指定基础镜像（解决拉取超时或权限问题），默认使用 `registry.dockerproxy.com/library/python:3.11-slim`：
+Dockerfile 支持通过构建参数指定基础镜像（解决拉取超时问题）：
 ```bash
 # 默认使用 Dockerfile 内的镜像源
 docker compose up --build
 
 # 指定可访问的基础镜像
 docker compose build --build-arg PY_BASE=docker.m.daocloud.io/library/python:3.11-slim
-# 或使用你的私有/内网镜像仓库：
-# docker compose build --build-arg PY_BASE=registry.yourcorp.com/python:3.11-slim
 docker compose up -d
 ```
 如需全局镜像加速，可在 Docker 守护进程配置 `registry-mirrors`（重启 Docker 后生效）。
